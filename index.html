@@ -7,45 +7,53 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Cinzel:wght@700;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Tajawal',sans-serif}
-body{background:#09090a;color:#fff}
+body{background:#08080a;color:#fff;position:relative;overflow-x:hidden}
+.bg-image{position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(8,8,10,0.88), rgba(8,8,10,0.92)), url('https://images.unsplash.com/photo-1520340356584-f9917d1eea4f?w=1920&q=80&auto=format&fit=crop');background-size:cover;background-position:center;background-attachment:fixed;filter:blur(1px)}
 .topbar{background:linear-gradient(90deg,#000,#1a1500,#000);border-bottom:2px solid #d4af37;padding:10px;text-align:center;color:#d4af37;font-size:13px}
-.header-main{background:radial-gradient(ellipse at center,#1a1a1a 0%,#080808 70%);padding:35px 16px 40px;text-align:center;border-bottom:1px solid #222}
-.crown-anim{font-size:48px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 20px gold)}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.brand-en{font-family:'Cinzel',serif;font-size:42px;font-weight:900;letter-spacing:4px;background:linear-gradient(135deg,#fff 20%,#d4af37 50%,#f9e076 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
-.brand-ar{font-size:28px;font-weight:900;color:#d4af37;margin-top:6px;letter-spacing:2px}
+.header-main{background:radial-gradient(ellipse at center, rgba(26,26,26,0.9) 0%, rgba(8,8,8,0.95) 70%);padding:38px 16px 42px;text-align:center;border-bottom:1px solid rgba(212,175,55,0.2);backdrop-filter:blur(10px)}
+.crown-anim{font-size:52px;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 20px gold)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes slideUp{from{transform:translate(-50%,50px); opacity:0} to{transform:translate(-50%,0); opacity:1}}
+@keyframes slideDown{from{transform:translate(-50%,0); opacity:1} to{transform:translate(-50%,50px); opacity:0}}
+.brand-en{font-family:'Cinzel',serif;font-size:44px;font-weight:900;letter-spacing:4px;background:linear-gradient(135deg,#fff 20%,#d4af37 50%,#f9e076 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
+.brand-ar{font-size:30px;font-weight:900;color:#d4af37;margin-top:8px;letter-spacing:2px;text-shadow:0 0 20px rgba(212,175,55,0.4)}
 .brand-sub{color:#888;font-size:13px;margin-top:8px;letter-spacing:3px}
-.gold-line{width:120px;height:3px;background:linear-gradient(90deg,transparent,#d4af37,#f9e076,transparent);margin:14px auto;border-radius:2px}
-.contact-row{display:flex;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.gold-line{width:130px;height:3px;background:linear-gradient(90deg,transparent,#d4af37,#f9e076,transparent);margin:16px auto;border-radius:2px}
+.contact-row{display:flex;justify-content:center;gap:10px;margin-top:20px;flex-wrap:wrap}
 .contact-pill{background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);color:#d4af37;padding:8px 16px;border-radius:30px;font-size:12px;font-weight:700}
 .cart-float{position:fixed;top:18px;left:16px;z-index:100;background:linear-gradient(135deg,#d4af37,#f9e076);color:#000;padding:11px 20px;border-radius:30px;font-weight:900;cursor:pointer;box-shadow:0 8px 25px rgba(212,175,55,0.5)}
 .cart-count{background:#ff0000;color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;position:absolute;top:-6px;left:-6px}
-.section{padding:20px 14px;max-width:1100px;margin:auto}
-.title{text-align:center;color:#d4af37;font-size:26px;font-weight:900;margin:36px 0 18px}
+.section{padding:20px 14px;max-width:1100px;margin:auto;position:relative;z-index:2}
+.title{text-align:center;color:#d4af37;font-size:27px;font-weight:900;margin:38px 0 18px}
 .title::after{content:'';display:block;width:70px;height:3px;background:linear-gradient(90deg,#d4af37,#f9e076);margin:12px auto}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
-.card{background:linear-gradient(145deg,#161616,#1e1e1e);border:1px solid #2a2a2a;border-radius:20px;padding:22px;position:relative;transition:.35s}
-.card:hover{border-color:#d4af37;transform:translateY(-5px);box-shadow:0 18px 45px rgba(212,175,55,0.18)}
-.card.pro{border:1.6px solid #d4af37;background:linear-gradient(145deg,#1f1a02,#2a2308)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(305px,1fr));gap:16px}
+.card{background:linear-gradient(145deg,rgba(22,22,22,0.92),rgba(30,30,30,0.92));backdrop-filter:blur(12px);border:1px solid rgba(42,42,42,0.8);border-radius:20px;padding:22px;position:relative;transition:.35s;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;right:0;width:100%;height:2px;background:linear-gradient(90deg,transparent,#d4af37,transparent)}
+.card:hover{border-color:#d4af37;transform:translateY(-5px);box-shadow:0 18px 45px rgba(212,175,55,0.2)}
+.card.pro{border:1.6px solid rgba(212,175,55,0.6);background:linear-gradient(145deg,rgba(31,26,2,0.92),rgba(42,35,8,0.92))}
 .price{color:#d4af37;font-size:34px;font-weight:900;margin:10px 0}
 .price small{font-size:13px;color:#888}
 .card p{color:#aaa;font-size:13.5px;line-height:1.9}
-.add-btn{width:100%;margin-top:15px;background:linear-gradient(135deg,#d4af37,#f9e076);color:#000;border:none;padding:13px;border-radius:12px;font-weight:900;font-size:15px;cursor:pointer}
+.add-btn{width:100%;margin-top:15px;background:linear-gradient(135deg,#d4af37,#f9e076);color:#000;border:none;padding:13px;border-radius:12px;font-weight:900;font-size:15px;cursor:pointer;transition:.2s}
+.add-btn:hover{transform:scale(1.02);box-shadow:0 5px 20px rgba(212,175,55,0.4)}
 .badge{position:absolute;top:13px;left:13px;background:linear-gradient(135deg,#d4af37,#f9e076);color:#000;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:900}
 .cart-panel{position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:300;display:none;overflow-y:auto;padding:20px}
 .cart-box{background:#151515;border:1.5px solid #d4af37;border-radius:22px;max-width:520px;margin:30px auto;padding:24px}
 .cart-item{display:flex;justify-content:space-between;align-items:center;background:#222;padding:12px 14px;border-radius:12px;margin:9px 0}
-.cart-item button{background:#ff3333;color:#fff;border:none;padding:6px 12px;border-radius:8px;cursor:pointer}
-.input{width:100%;padding:13px;background:#222;border:1px solid #333;border-radius:11px;color:#fff;margin:9px 0}
-.loc-btn{width:100%;padding:13px;background:#1e293b;border:1.5px solid #d4af37;color:#d4af37;border-radius:11px;font-weight:900;cursor:pointer;margin:9px 0}
+.cart-item button{background:#ff3333;color:#fff;border:none;padding:6px 12px;border-radius:8px;cursor:pointer;font-weight:700}
+.input{width:100%;padding:13px;background:#222;border:1px solid #333;border-radius:11px;color:#fff;margin:9px 0;font-size:14px}
+.loc-btn{width:100%;padding:13px;background:linear-gradient(135deg,#1e293b,#0f172a);border:1.5px solid #d4af37;color:#d4af37;border-radius:11px;font-weight:900;cursor:pointer;margin:9px 0}
 .order-btn{width:100%;padding:16px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:none;border-radius:14px;font-weight:900;font-size:19px;cursor:pointer;margin-top:14px}
 .close{float:left;background:#333;color:#fff;border:none;width:34px;height:34px;border-radius:50%;cursor:pointer}
 .total{font-size:24px;font-weight:900;color:#d4af37;text-align:center;margin:16px 0}
+.toast{position:fixed;bottom:110px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,#d4af37,#f9e076);color:#000;padding:14px 26px;border-radius:30px;font-weight:900;z-index:9999;box-shadow:0 10px 30px rgba(212,175,55,0.6);animation:slideUp 0.35s ease}
 </style>
 </head>
 <body>
+<div class="bg-image"></div>
 <div class="topbar">✦ مواد إيطالية فاخرة • بوليش ملكي • لمعان يدوم طويلاً • 9HQ7+G2P ✦</div>
 <div class="cart-float" onclick="openCart()">🛒 السلة <span id="cartCount" class="cart-count" style="display:none">0</span></div>
+
 <div class="header-main">
 <div class="crown-anim">👑</div>
 <div class="brand-en">ROYAL CAR WASH</div>
@@ -58,22 +66,26 @@ body{background:#09090a;color:#fff}
 <div class="contact-pill">✨ مواد إيطالية 100%</div>
 </div>
 </div>
+
 <div class="section">
 <div class="title">✨ باقات Royal WASH الأساسية</div>
 <div class="grid">
-<div class="card"><h3>Royal WASH - SALON</h3><div class="price">50 <small>د.إ</small></div><p>غسيل خارجي بالشامبو الإيطالي مع تنظيف وتلميع داخلي شامل.</p><button class="add-btn" onclick="addToCart('WASH SALON',50)">➕ أضف للسلة</button></div>
-<div class="card"><h3>Royal WASH - 4X4 - 60 د.إ</h3><div class="price">60 <small>د.إ</small></div><p>غسيل خارجي بالشامبو الإيطالي مع تنظيف داخلي شامل بمواد إيطالية مميزة.</p><button class="add-btn" onclick="addToCart('WASH 4X4 60',60)">➕ أضف للسلة</button></div>
+<div class="card"><h3>Royal WASH - SALON</h3><div class="price">50 <small>د.إ</small></div><p>غسيل خارجي بالشامبو الإيطالي عالي الجودة مع تنظيف وتلميع داخلي شامل.</p><button class="add-btn" onclick="addToCart('WASH SALON',50)">➕ أضف للسلة</button></div>
+<div class="card"><h3>Royal WASH - 4X4 - 60 د.إ</h3><div class="price">60 <small>د.إ</small></div><p>غسيل خارجي باستخدام الشامبو الإيطالي عالي الجودة، مع تنظيف وتلميع داخلي شامل بمواد إيطالية مميزة.</p><button class="add-btn" onclick="addToCart('WASH 4X4 60',60)">➕ أضف للسلة</button></div>
 </div>
+
 <div class="title">💎 باقات PLUS</div>
 <div class="grid">
 <div class="card"><h3>Royal WASH PLUS SALON - 90 د.إ</h3><div class="price">90 <small>د.إ</small></div><p>غسيل خارجي بقوة والشامبو الإيطالي + تنظيف داخلي شامل + غسيل الرفرفات بالميكل الإيطالي + تكييس + معطر ومنديل.</p><button class="add-btn" onclick="addToCart('PLUS SALON 90',90)">➕ أضف للسلة</button></div>
 <div class="card"><span class="badge">الأكثر طلباً 🔥</span><h3>Royal WASH PLUS - 4X4 - 100 د.إ</h3><div class="price">100 <small>د.إ</small></div><p>غسيل خارجي بالقوة والشامبو الإيطالي + تنظيف وتلميع داخلي كامل + غسيل الرفرفات بالتكنيك الإيطالي + تكييس + معطر ومنديل.</p><button class="add-btn" onclick="addToCart('PLUS 4X4 100',100)">➕ أضف للسلة</button></div>
 </div>
+
 <div class="title">👑 باقات PRO - التنظيف العميق الملكي</div>
 <div class="grid">
 <div class="card pro"><span class="badge">PRO</span><h3>Royal WASH PRO SALON - 200 د.إ</h3><div class="price">200 <small>د.إ</small></div><p>غسيل خارجي بالقوة + تنظيف داخلي عميق + غسيل الرفرف والدرج والمديارة بالبخار والمواد الكيميائية الإيطالية + تكييس + بوليش + معطر ومنديلين.</p><button class="add-btn" onclick="addToCart('PRO SALON 200',200)">➕ أضف للسلة</button></div>
 <div class="card pro"><span class="badge">ملكي 👑</span><h3>Royal WASH PRO - 4X4 - 240 د.إ</h3><div class="price">240 <small>د.إ</small></div><p>غسيل خارجي بالقوة والشامبو الإيطالي + تنظيف داخلي عميق + غسيل الرفرفات والدرج والمديارة من الأسفل بالبخار + تكييس + بوليش + معطر ومنديلين.</p><button class="add-btn" onclick="addToCart('PRO 4X4 240',240)">➕ أضف للسلة</button></div>
 </div>
+
 <div class="title">🏍️ خدمات خاصة</div>
 <div class="grid">
 <div class="card"><h3>دراجة نارية (2 عجلات) - بخار</h3><div class="price">75 <small>د.إ</small></div><button class="add-btn" onclick="addToCart('دراجة نارية',75)">➕ أضف للسلة</button></div>
@@ -82,12 +94,14 @@ body{background:#09090a;color:#fff}
 <div class="card"><h3>القوارب 10-20 كم</h3><div class="price">100 <small>د.إ</small></div><button class="add-btn" onclick="addToCart('قارب 10-20 كم',100)">➕ أضف للسلة</button></div>
 <div class="card"><h3>القوارب 10-40 كم</h3><div class="price">150 <small>د.إ</small></div><button class="add-btn" onclick="addToCart('قارب 10-40 كم',150)">➕ أضف للسلة</button></div>
 </div>
+
 <div class="title">🔁 الاشتراكات الشهرية - 5 غسلات</div>
 <div class="grid">
 <div class="card pro"><h3>اشتراك شهري صالون - 5 غسلات</h3><div class="price">220 <small>د.إ</small></div><p>44 د.إ للغسلة</p><button class="add-btn" onclick="addToCart('اشتراك صالون 5 غسلات',220)">➕ أضف للسلة</button></div>
 <div class="card pro"><h3>اشتراك شهري 4X4 - 5 غسلات</h3><div class="price">260 <small>د.إ</small></div><p>52 د.إ للغسلة</p><button class="add-btn" onclick="addToCart('اشتراك 4X4 5 غسلات',260)">➕ أضف للسلة</button></div>
 </div>
 </div>
+
 <div id="cartPanel" class="cart-panel">
 <div class="cart-box">
 <button class="close" onclick="closeCart()">✕</button>
@@ -103,16 +117,29 @@ body{background:#09090a;color:#fff}
 <button class="input" onclick="closeCart()" style="text-align:center;cursor:pointer">⬅️ متابعة التسوق</button>
 </div>
 </div>
+
 <script>
-let cart=[];let userLat=null,userLng=null;
-function addToCart(name,price){cart.push({name,price});updateCount();if(navigator.vibrate)navigator.vibrate(80);alert('✅ تمت إضافة '+name+' للسلة');}
+let cart=[];
+function addToCart(name,price){
+  cart.push({name,price});
+  updateCount();
+  if(navigator.vibrate) navigator.vibrate(80);
+  let toast=document.createElement('div');
+  toast.className='toast';
+  toast.innerHTML=`✅ تمت إضافة ${name} للسلة`;
+  document.body.appendChild(toast);
+  setTimeout(()=>{
+    toast.style.animation='slideDown 0.35s ease forwards';
+    setTimeout(()=>toast.remove(),350);
+  },2500);
+}
 function updateCount(){let c=document.getElementById('cartCount');c.style.display=cart.length?'flex':'none';c.innerText=cart.length;}
 function openCart(){renderCart();document.getElementById('cartPanel').style.display='block';}
 function closeCart(){document.getElementById('cartPanel').style.display='none';}
 function renderCart(){let div=document.getElementById('cartItems');let total=0;if(cart.length===0){div.innerHTML='<p style="text-align:center;color:#888;padding:20px">السلة فارغة - أضف باقاتك 👑</p>';document.getElementById('cartTotal').innerText='';return;}div.innerHTML='';cart.forEach((it,i)=>{total+=it.price;div.innerHTML+=`<div class="cart-item"><span>${it.name}</span><span>${it.price} د.إ <button onclick="removeItem(${i})">حذف</button></span></div>`;});document.getElementById('cartTotal').innerText='الإجمالي: '+total+' د.إ';}
 function removeItem(i){cart.splice(i,1);updateCount();renderCart();}
-function getLocation(){let status=document.getElementById('locStatus');let locInput=document.getElementById('custLocation');status.innerText='⏳ جاري تحديد موقعك الحالي...';if(!navigator.geolocation){status.innerText='❌ المتصفح لا يدعم تحديد الموقع';return;}navigator.geolocation.getCurrentPosition(pos=>{userLat=pos.coords.latitude;userLng=pos.coords.longitude;let link=`https://maps.google.com/?q=${userLat},${userLng}`;locInput.value=link;status.innerHTML=`✅ تم تحديد موقعك بنجاح<br><a href="${link}" target="_blank" style="color:#d4af37">🗺️ فتح في خرائط جوجل</a>`;},err=>{status.innerText='❌ فشل: '+err.message+' - تأكد من تفعيل الـ GPS';});}
-function sendOrder(){if(cart.length===0){alert('السلة فارغة');return;}let name=document.getElementById('custName').value||'عميل';let phone=document.getElementById('custPhone').value||'بدون رقم';let loc=document.getElementById('custLocation').value||'لم يحدد الموقع';let total=cart.reduce((s,it)=>s+it.price,0);let itemsText=cart.map((it,i)=>`${i+1}. ${it.name} - ${it.price} د.إ`).join('%0A');let msg=`👑 طلب جديد - ROYAL CAR WASH - الغسيل الملكي%0A%0A👤 الاسم: ${name}%0A📞 الجوال: ${phone}%0A%0A🛒 الطلبات:%0A${itemsText}%0A%0A💰 الإجمالي: ${total} د.إ%0A%0A📍 موقع العميل: ${loc}%0A%0A📍 موقع المركز: https://maps.google.com/?q=9HQ7+G2P`;window.open(`https://wa.me/971545557535?text=${msg}`,'_blank');}
+function getLocation(){let status=document.getElementById('locStatus');let locInput=document.getElementById('custLocation');status.innerText='⏳ جاري تحديد موقعك الحالي...';if(!navigator.geolocation){status.innerText='❌ المتصفح لا يدعم تحديد الموقع';return;}navigator.geolocation.getCurrentPosition(pos=>{let link=`https://maps.google.com/?q=${pos.coords.latitude},${pos.coords.longitude}`;locInput.value=link;status.innerHTML=`✅ تم تحديد موقعك بنجاح<br><a href="${link}" target="_blank" style="color:#d4af37">🗺️ فتح في خرائط جوجل</a>`;},err=>{status.innerText='❌ فشل: '+err.message;});}
+function sendOrder(){if(cart.length===0){return;}let name=document.getElementById('custName').value||'عميل';let phone=document.getElementById('custPhone').value||'بدون رقم';let loc=document.getElementById('custLocation').value||'لم يحدد';let total=cart.reduce((s,it)=>s+it.price,0);let itemsText=cart.map((it,i)=>`${i+1}. ${it.name} - ${it.price} د.إ`).join('%0A');let msg=`👑 طلب جديد - ROYAL CAR WASH - الغسيل الملكي%0A%0A👤 الاسم: ${name}%0A📞 الجوال: ${phone}%0A%0A🛒 الطلبات:%0A${itemsText}%0A%0A💰 الإجمالي: ${total} د.إ%0A%0A📍 موقع العميل: ${loc}%0A%0A📍 موقع المركز: https://maps.google.com/?q=9HQ7+G2P`;window.open(`https://wa.me/971545557535?text=${msg}`,'_blank');}
 </script>
 </body>
 </html>
